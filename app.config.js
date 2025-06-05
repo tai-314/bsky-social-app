@@ -18,10 +18,10 @@ module.exports = function (_config) {
   const IS_DEV = !IS_TESTFLIGHT || !IS_PRODUCTION
 
   const ASSOCIATED_DOMAINS = [
-    'applinks:bsky.app',
-    'applinks:staging.bsky.app',
-    'appclips:bsky.app',
-    'appclips:go.bsky.app', // Allows App Clip to work when scanning QR codes
+    'applinks:grapevyne.app',
+    'applinks:staging.grapevyne.app',
+    'appclips:grapevyne.app',
+    'appclips:go.grapevyne.app', // Allows App Clip to work when scanning QR codes
     // When testing local services, enter an ngrok (et al) domain here. It must use a standard HTTP/HTTPS port.
     ...(IS_DEV || IS_TESTFLIGHT ? [] : []),
   ]
@@ -38,19 +38,19 @@ module.exports = function (_config) {
   return {
     expo: {
       version: VERSION,
-      name: 'Bluesky',
-      slug: 'bluesky',
-      scheme: 'bluesky',
-      owner: 'blueskysocial',
+      name: 'GrapeVyne',
+      slug: 'grapevyne',
+      scheme: 'grapevyne',
+      owner: 'grapevynesocial',
       runtimeVersion: {
         policy: 'appVersion',
       },
       icon: './assets/app-icons/ios_icon_default_light.png',
       userInterfaceStyle: 'automatic',
-      primaryColor: '#1083fe',
+      primaryColor: '#8b10fe',
       ios: {
         supportsTablet: false,
-        bundleIdentifier: 'xyz.blueskyweb.app',
+        bundleIdentifier: 'xyz.grapevyne.app',
         config: {
           usesNonExemptEncryption: false,
         },
@@ -154,7 +154,7 @@ module.exports = function (_config) {
           backgroundColor: '#1185FE',
         },
         googleServicesFile: './google-services.json',
-        package: 'xyz.blueskyweb.app',
+        package: 'xyz.grapevyne.app',
         intentFilters: [
           {
             action: 'VIEW',
@@ -162,7 +162,7 @@ module.exports = function (_config) {
             data: [
               {
                 scheme: 'https',
-                host: 'bsky.app',
+                host: 'grapevyne.app',
               },
               IS_DEV && {
                 scheme: 'http',
@@ -203,7 +203,7 @@ module.exports = function (_config) {
         USE_SENTRY && [
           '@sentry/react-native/expo',
           {
-            organization: 'blueskyweb',
+            organization: 'grapevyneweb',
             project: 'app',
             url: 'https://sentry.io',
           },
@@ -366,26 +366,26 @@ module.exports = function (_config) {
               ios: {
                 appExtensions: [
                   {
-                    targetName: 'Share-with-Bluesky',
-                    bundleIdentifier: 'xyz.blueskyweb.app.Share-with-Bluesky',
+                    targetName: 'Share-with-GrapeVyne',
+                    bundleIdentifier: 'xyz.grapevyne.app.Share-with-GrapeVyne',
                     entitlements: {
                       'com.apple.security.application-groups': [
-                        'group.app.bsky',
+                        'group.app.grapevyne',
                       ],
                     },
                   },
                   {
-                    targetName: 'BlueskyNSE',
-                    bundleIdentifier: 'xyz.blueskyweb.app.BlueskyNSE',
+                    targetName: 'GrapeVyneNSE',
+                    bundleIdentifier: 'xyz.grapevyne.app.GrapeVyneNSE',
                     entitlements: {
                       'com.apple.security.application-groups': [
-                        'group.app.bsky',
+                        'group.app.grapevyne',
                       ],
                     },
                   },
                   {
-                    targetName: 'BlueskyClip',
-                    bundleIdentifier: 'xyz.blueskyweb.app.AppClip',
+                    targetName: 'GrapeVyneClip',
+                    bundleIdentifier: 'xyz.grapevyne.app.AppClip',
                   },
                 ],
               },
