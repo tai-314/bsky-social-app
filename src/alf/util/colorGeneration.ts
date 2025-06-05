@@ -1,6 +1,9 @@
-export const BLUE_HUE = 211
+// export const BLUE_HUE = 211
+export const BLUE_HUE = 290
 export const RED_HUE = 346
 export const GREEN_HUE = 152
+// TODO: Apply Purple Hue instead of Blue
+export const PURPLE_HUE = 290
 
 /**
  * Smooth progression of lightness "stops" for generating HSL colors.
