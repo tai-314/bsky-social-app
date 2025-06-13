@@ -9,6 +9,9 @@ import {logger} from '#/logger'
 
 export const BSKY_APP_HOST = 'https://bsky.app'
 const BSKY_TRUSTED_HOSTS = [
+  'grapevyne\\.app',
+  'grapevyne\\.social',
+
   'bsky\\.app',
   'bsky\\.social',
   'blueskyweb\\.xyz',
@@ -52,7 +55,7 @@ export function toNiceDomain(url: string): string {
   try {
     const urlp = new URL(url)
     if (`https://${urlp.host}` === BSKY_SERVICE) {
-      return 'Bluesky Social'
+      return 'GrapeVyne Social'
     }
     return urlp.host ? urlp.host : url
   } catch (e) {

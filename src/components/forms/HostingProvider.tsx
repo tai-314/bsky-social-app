@@ -48,7 +48,7 @@ export function HostingProvider({
             label={toNiceDomain(serviceUrl)}
             accessibilityHint={_(msg`Changes hosting provider`)}
             onPress={onPressSelectService}
-            variant="ghost"
+            variant="solid"
             color="secondary"
             size="tiny"
             style={[
