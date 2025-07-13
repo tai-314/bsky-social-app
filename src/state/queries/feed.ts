@@ -19,7 +19,11 @@ import {
   useQueryClient,
 } from '@tanstack/react-query'
 
-import {DISCOVER_FEED_URI, DISCOVER_SAVED_FEED} from '#/lib/constants'
+import {
+  // LATEST_FEED_URI,
+  DISCOVER_FEED_URI,
+  DISCOVER_SAVED_FEED,
+} from '#/lib/constants'
 import {sanitizeDisplayName} from '#/lib/strings/display-names'
 import {sanitizeHandle} from '#/lib/strings/handles'
 import {STALE} from '#/state/queries'
@@ -385,13 +389,63 @@ export type SavedFeedSourceInfo = FeedSourceInfo & {
   savedFeed: AppBskyActorDefs.SavedFeed
 }
 
+// const PWI_DISCOVER_FEED_STUB: SavedFeedSourceInfo = {
+//   type: 'feed',
+//   displayName: 'Discover',
+//   uri: DISCOVER_FEED_URI,
+//   feedDescriptor: `feedgen|${DISCOVER_FEED_URI}`,
+//   route: {
+//     href: '/',
+//     name: 'Home',
+//     params: {},
+//   },
+//   cid: '',
+//   avatar: '',
+//   description: new RichText({text: ''}),
+//   creatorDid: '',
+//   creatorHandle: '',
+//   likeCount: 0,
+//   likeUri: '',
+//   // ---
+//   savedFeed: {
+//     id: 'pwi-discover',
+//     ...DISCOVER_SAVED_FEED,
+//   },
+//   contentMode: undefined,
+// }
+
+// const PWI_LATEST_FEED_STUB: SavedFeedSourceInfo = {
+//   type: 'feed',
+//   displayName: 'Latest',
+//   uri: LATEST_FEED_URI,
+//   feedDescriptor: `feedgen|${LATEST_FEED_URI}`,
+//   route: {
+//     href: '/',
+//     name: 'Home',
+//     params: {},
+//   },
+//   cid: '',
+//   avatar: '',
+//   description: new RichText({text: ''}),
+//   creatorDid: '',
+//   creatorHandle: '',
+//   likeCount: 0,
+//   likeUri: '',
+//   // ---
+//   savedFeed: {
+//     id: 'pwi-latest',
+//     ...DISCOVER_SAVED_FEED,
+//   },
+//   contentMode: undefined,
+// }
+
 const PWI_DISCOVER_FEED_STUB: SavedFeedSourceInfo = {
   type: 'feed',
   displayName: 'Discover',
   uri: DISCOVER_FEED_URI,
   feedDescriptor: `feedgen|${DISCOVER_FEED_URI}`,
   route: {
-    href: '/',
+    href: '/discover',
     name: 'Home',
     params: {},
   },
@@ -404,7 +458,7 @@ const PWI_DISCOVER_FEED_STUB: SavedFeedSourceInfo = {
   likeUri: '',
   // ---
   savedFeed: {
-    id: 'pwi-discover',
+    id: 'pwi-blacksky',
     ...DISCOVER_SAVED_FEED,
   },
   contentMode: undefined,
@@ -428,7 +482,11 @@ export function usePinnedFeedsInfos() {
     ],
     queryFn: async () => {
       if (!hasSession) {
-        return [PWI_DISCOVER_FEED_STUB]
+        // INFO: Add more feeds when not logged in
+        return [
+          // PWI_LATEST_FEED_STUB,
+          PWI_DISCOVER_FEED_STUB,
+        ]
       }
 
       let resolved = new Map<string, FeedSourceInfo>()
