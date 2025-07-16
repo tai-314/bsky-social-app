@@ -1,10 +1,10 @@
 import React from 'react'
-import {ColorSchemeName, useColorScheme} from 'react-native'
+import {type ColorSchemeName, useColorScheme} from 'react-native'
 
 import {isWeb} from '#/platform/detection'
 import {useThemePrefs} from '#/state/shell'
 import {dark, dim, light} from '#/alf/themes'
-import {ThemeName} from '#/alf/types'
+import {type ThemeName} from '#/alf/types'
 
 export function useColorModeTheme(): ThemeName {
   const theme = useThemeName()
@@ -26,6 +26,7 @@ export function useThemeName(): ThemeName {
 function getThemeName(
   colorScheme: ColorSchemeName,
   colorMode: 'system' | 'light' | 'dark',
+  // eslint-disable-next-line
   darkTheme?: ThemeName,
 ) {
   if (
@@ -34,7 +35,9 @@ function getThemeName(
   ) {
     return 'light'
   } else {
-    return darkTheme ?? 'dim'
+    return 'dark'
+    // disable dim default dark
+    // return darkTheme ?? 'dim'
   }
 }
 
