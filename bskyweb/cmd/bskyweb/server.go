@@ -246,22 +246,21 @@ func serve(cctx *cli.Context) error {
 	})
 
 	// Serve manifest.json
-	e.GET("/manifest.json", func(c echo.Context) error {
-		return c.File("static/manifest.json")
-	})
+	e.GET("/manifest.json", echo.WrapHandler(staticHandler))
+
 	// Serve service worker and workbox files (static + dynamic)
-	e.GET("/sw.js", func(c echo.Context) error {
-		return c.File("static/sw.js")
-	})
-	e.GET("/sw.js.map", func(c echo.Context) error {
-		return c.File("static/sw.js.map")
-	})
-	e.GET("/workbox-:hash.js", func(c echo.Context) error {
-		return c.File("static/workbox-" + c.Param("hash") + ".js")
-	})
-	e.GET("/workbox-:hash.js.map", func(c echo.Context) error {
-		return c.File("static/workbox-" + c.Param("hash") + ".js.map")
-	})
+	// e.GET("/sw.js", func(c echo.Context) error {
+	// 	return c.File("static/sw.js")
+	// })
+	// e.GET("/sw.js.map", func(c echo.Context) error {
+	// 	return c.File("static/sw.js.map")
+	// })
+	// e.GET("/workbox-:hash.js", func(c echo.Context) error {
+	// 	return c.File("static/workbox-" + c.Param("hash") + ".js")
+	// })
+	// e.GET("/workbox-:hash.js.map", func(c echo.Context) error {
+	// 	return c.File("static/workbox-" + c.Param("hash") + ".js.map")
+	// })
 
 	// home
 	e.GET("/", server.WebHome)
