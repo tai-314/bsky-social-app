@@ -245,6 +245,24 @@ func serve(cctx *cli.Context) error {
 		}
 	})
 
+	// Serve manifest.json
+	e.GET("/manifest.json", func(c echo.Context) error {
+		return c.File("static/manifest.json")
+	})
+	// Serve service worker and workbox files (static + dynamic)
+	e.GET("/sw.js", func(c echo.Context) error {
+		return c.File("static/sw.js")
+	})
+	e.GET("/sw.js.map", func(c echo.Context) error {
+		return c.File("static/sw.js.map")
+	})
+	e.GET("/workbox-:hash.js", func(c echo.Context) error {
+		return c.File("static/workbox-" + c.Param("hash") + ".js")
+	})
+	e.GET("/workbox-:hash.js.map", func(c echo.Context) error {
+		return c.File("static/workbox-" + c.Param("hash") + ".js.map")
+	})
+
 	// home
 	e.GET("/", server.WebHome)
 
@@ -395,11 +413,11 @@ func (srv *Server) errorHandler(err error, c echo.Context) {
 func (srv *Server) Download(c echo.Context) error {
 	ua := c.Request().UserAgent()
 	if strings.Contains(ua, "Android") {
-		return c.Redirect(http.StatusFound, "https://play.google.com/store/apps/details?id=xyz.blueskyweb.app")
+		return c.Redirect(http.StatusFound, "https://play.google.com/store/apps/details?id=")
 	}
 
 	if strings.Contains(ua, "iPhone") || strings.Contains(ua, "iPad") || strings.Contains(ua, "iPod") {
-		return c.Redirect(http.StatusFound, "https://apps.apple.com/tr/app/bluesky-social/id6444370199")
+		return c.Redirect(http.StatusFound, "https://apps.apple.com/tr/app/")
 	}
 
 	return c.Redirect(http.StatusFound, "/")
