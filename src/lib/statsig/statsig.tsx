@@ -61,7 +61,7 @@ function createStatsigOptions(prefetchUsers: StatsigUser[]) {
     // Get fresh flags for other accounts as well, if any.
     prefetchUsers,
     // TODO: change to events.grapevyne.space/v2
-    api: 'https://statsigapi.net/v2',
+    api: 'https://grp-statsig-proxy.cloudflare-o8czz.workers.dev/v2',
     // api: 'https://events.bsky.app/v2',
   }
 }
