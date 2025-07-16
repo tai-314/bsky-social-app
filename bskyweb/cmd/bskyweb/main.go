@@ -84,7 +84,7 @@ func run(args []string) {
 					Name:     "cors-allowed-origins",
 					Usage:    "list of allowed origins for CORS requests",
 					Required: false,
-					Value:    cli.NewStringSlice("https://bsky.app", "https://main.bsky.dev", "https://app.staging.bsky.dev", "https://grapevyne.space", "https://main.grapevyne.dev", "https://app.staging.grapevyne.dev", "https://statsigapi.net"),
+					Value:    cli.NewStringSlice("https://bsky.app", "https://main.bsky.dev", "https://app.staging.bsky.dev", "https://grapevyne.space", "https://main.grapevyne.dev", "https://app.staging.grapevyne.dev", "https://grp-statsig-proxy.cloudflare-o8czz.workers.dev"),
 					EnvVars:  []string{"CORS_ALLOWED_ORIGINS"},
 				},
 				&cli.StringFlag{
