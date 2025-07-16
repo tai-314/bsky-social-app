@@ -109,6 +109,7 @@ module.exports = {
     'bskyembed',
     'src/locale/locales/_build/',
     'src/locale/locales/**/*.js',
+    'web',
   ],
   settings: {
     componentWrapperFunctions: ['observer'],
