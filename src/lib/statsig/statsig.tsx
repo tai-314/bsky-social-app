@@ -1,19 +1,19 @@
 import React from 'react'
 import {Platform} from 'react-native'
-import {AppState, AppStateStatus} from 'react-native'
+import {AppState, type AppStateStatus} from 'react-native'
 import {Statsig, StatsigProvider} from 'statsig-react-native-expo'
 
 import {BUNDLE_DATE, BUNDLE_IDENTIFIER, IS_TESTFLIGHT} from '#/lib/app-info'
 import {logger} from '#/logger'
-import {MetricEvents} from '#/logger/metrics'
+import {type MetricEvents} from '#/logger/metrics'
 import {isWeb} from '#/platform/detection'
 import * as persisted from '#/state/persisted'
 import {useSession} from '../../state/session'
 import {timeout} from '../async/timeout'
 import {useNonReactiveCallback} from '../hooks/useNonReactiveCallback'
-import {Gate} from './gates'
+import {type Gate} from './gates'
 
-const SDK_KEY = 'client-SXJakO39w9vIhl3D44u8UupyzFl4oZ2qPIkjwcvuPsV'
+const SDK_KEY = 'client-v68ycEB2r50oPmZPkQzayxOk3Kcz5DxeVLCDp5WyoTv'
 
 export const initPromise = initialize()
 
@@ -60,7 +60,9 @@ function createStatsigOptions(prefetchUsers: StatsigUser[]) {
     initTimeoutMs: 1,
     // Get fresh flags for other accounts as well, if any.
     prefetchUsers,
-    api: 'https://events.bsky.app/v2',
+    // TODO: change to events.grapevyne.space/v2
+    api: 'https://statsigapi.net/v2',
+    // api: 'https://events.bsky.app/v2',
   }
 }
 
