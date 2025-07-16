@@ -81,11 +81,21 @@ let PostMeta = (opts: PostMetaOpts): React.ReactNode => {
           />
         </View>
       )}
-      <View style={[a.flex_row, a.align_end, a.flex_shrink, a.flex_1, a.justify_between]}>
+      <View
+        style={[
+          a.flex_row,
+          a.align_end,
+          a.flex_shrink,
+          //  a.flex_1, a.justify_between
+        ]}>
         <ProfileHoverCard inline did={author.did}>
-          <View style={[
-            // a.flex_row, a.align_end, a.flex_shrink
-            a.flex_col, a.align_start, a.flex_shrink
+          <View
+            style={[
+              a.flex_row,
+              a.align_end,
+              a.flex_shrink,
+              // ALT Layout vv
+              // a.flex_col, a.align_start, a.flex_shrink
             ]}>
             <WebOnlyInlineLinkText
               emoji
@@ -95,11 +105,11 @@ let PostMeta = (opts: PostMetaOpts): React.ReactNode => {
               disableMismatchWarning
               onPress={onBeforePressAuthor}
               style={[
-                a.text_lg,
+                a.text_md,
                 a.font_bold,
                 t.atoms.text,
                 a.leading_tight,
-                {maxWidth: '100%', flexShrink: 0, fontWeight: 700},
+                {maxWidth: '70%', flexShrink: 0, fontWeight: 700},
               ]}>
               {forceLTR(
                 sanitizeDisplayName(
@@ -123,7 +133,8 @@ let PostMeta = (opts: PostMetaOpts): React.ReactNode => {
                 />
               </View>
             )}
-            {/* <WebOnlyInlineLinkText
+            {/* TODO */}
+            <WebOnlyInlineLinkText
               numberOfLines={1}
               to={profileLink}
               label={_(msg`View profile`)}
@@ -137,7 +148,7 @@ let PostMeta = (opts: PostMetaOpts): React.ReactNode => {
                 {flexShrink: 10},
               ]}>
               {NON_BREAKING_SPACE + sanitizeHandle(handle, '@')}
-            </WebOnlyInlineLinkText> */}
+            </WebOnlyInlineLinkText>
           </View>
         </ProfileHoverCard>
 
@@ -161,7 +172,7 @@ let PostMeta = (opts: PostMetaOpts): React.ReactNode => {
                   whiteSpace: 'nowrap',
                 }),
               ]}>
-              {/* {!isAndroid && (
+              {!isAndroid && (
                 <Text
                   style={[
                     a.text_md,
@@ -171,7 +182,7 @@ let PostMeta = (opts: PostMetaOpts): React.ReactNode => {
                   accessible={false}>
                   &middot;{' '}
                 </Text>
-              )} */}
+              )}
               {timeElapsed}
             </WebOnlyInlineLinkText>
           )}
