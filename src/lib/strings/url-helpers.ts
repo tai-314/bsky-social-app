@@ -7,8 +7,9 @@ import {isInvalidHandle} from '#/lib/strings/handles'
 import {startUriToStarterPackUri} from '#/lib/strings/starter-pack'
 import {logger} from '#/logger'
 
-export const BSKY_APP_HOST = 'https://bsky.app'
+export const BSKY_APP_HOST = 'https://grapevyne.space'
 const BSKY_TRUSTED_HOSTS = [
+  'grapevyne\\.space',
   'grapevyne\\.app',
   'grapevyne\\.social',
 
@@ -82,7 +83,7 @@ export function toShortUrl(url: string): string {
 
 export function toShareUrl(url: string): string {
   if (!url.startsWith('https')) {
-    const urlp = new URL('https://bsky.app')
+    const urlp = new URL('https://grapevyne.space')
     urlp.pathname = url
     url = urlp.toString()
   }
@@ -94,7 +95,7 @@ export function toBskyAppUrl(url: string): string {
 }
 
 export function isBskyAppUrl(url: string): boolean {
-  return url.startsWith('https://bsky.app/')
+  return url.startsWith('https://grapevyne.space/')
 }
 
 export function isRelativeUrl(url: string): boolean {
@@ -103,7 +104,7 @@ export function isRelativeUrl(url: string): boolean {
 
 export function isBskyRSSUrl(url: string): boolean {
   return (
-    (url.startsWith('https://bsky.app/') || isRelativeUrl(url)) &&
+    (url.startsWith('https://grapevyne.space/') || isRelativeUrl(url)) &&
     /\/rss\/?$/.test(url)
   )
 }
@@ -335,11 +336,11 @@ export function createProxiedUrl(url: string): string {
     return url
   }
 
-  return `https://go.bsky.app/redirect?u=${encodeURIComponent(url)}`
+  return `https://go.grapevyne.space/redirect?u=${encodeURIComponent(url)}`
 }
 
 export function isShortLink(url: string): boolean {
-  return url.startsWith('https://go.bsky.app/')
+  return url.startsWith('https://go.grapevyne.space/')
 }
 
 export function shortLinkToHref(url: string): string {
