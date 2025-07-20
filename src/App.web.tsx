@@ -1,6 +1,7 @@
 import '#/logger/sentry/setup' // must be near top
 import '#/view/icons'
 import './style.css'
+import 'smartbanner.js/dist/smartbanner.min.css'
 
 import React, {useEffect, useState} from 'react'
 import {RootSiblingParent} from 'react-native-root-siblings'
@@ -61,6 +62,7 @@ import {NuxDialogs} from '#/components/dialogs/nuxs'
 import {useStarterPackEntry} from '#/components/hooks/useStarterPackEntry'
 import {Provider as IntentDialogProvider} from '#/components/intents/IntentDialogs'
 import {Provider as PortalProvider} from '#/components/Portal'
+import usePreventZoom, {useDisablePinchZoomEffect} from '#/usePreventZoom'
 import {BackgroundNotificationPreferencesProvider} from '../modules/expo-background-notification-handler/src/BackgroundNotificationHandlerProvider'
 
 /**
@@ -75,6 +77,10 @@ function InnerApp() {
   const theme = useColorModeTheme()
   const {_} = useLingui()
   const hasCheckedReferrer = useStarterPackEntry()
+
+  // Prevent Zoom
+  usePreventZoom()
+  useDisablePinchZoomEffect()
 
   // init
   useEffect(() => {

@@ -1,37 +1,35 @@
 /* eslint-disable */
 import React, {useEffect} from 'react'
 
-function usePreventZoom(scrollCheck = true, keyboardCheck = true) {
+export const useDisablePinchZoomEffect = () => {
   useEffect(() => {
-    const handleKeydown = e => {
-      if (
-        keyboardCheck &&
-        e.ctrlKey &&
-        (e.keyCode == '61' ||
-          e.keyCode == '107' ||
-          e.keyCode == '173' ||
-          e.keyCode == '109' ||
-          e.keyCode == '187' ||
-          e.keyCode == '189')
-      ) {
+    const disablePinchZoom = e => {
+      if (e.touches.length > 1) {
         e.preventDefault()
       }
     }
-
-    const handleWheel = e => {
-      if (scrollCheck && e.ctrlKey) {
-        e.preventDefault()
-      }
-    }
-
-    document.addEventListener('keydown', handleKeydown)
-    document.addEventListener('wheel', handleWheel, {passive: false})
-
+    document.addEventListener('touchmove', disablePinchZoom, {passive: false})
     return () => {
-      document.removeEventListener('keydown', handleKeydown)
-      document.removeEventListener('wheel', handleWheel)
+      document.removeEventListener('touchmove', disablePinchZoom)
     }
-  }, [scrollCheck, keyboardCheck])
+  }, [])
+}
+
+function usePreventZoom() {
+  useEffect(() => {
+    const isIOS =
+      /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream
+    if (!isIOS) return
+
+    const inputs = document.querySelectorAll('input, textarea')
+    inputs.forEach(input => {
+      const computedStyle = window.getComputedStyle(input)
+      const currentFontSize = parseFloat(computedStyle.fontSize)
+      if (currentFontSize < 16) {
+        input.style.fontSize = '16px'
+      }
+    })
+  }, [])
 }
 
 export default usePreventZoom
