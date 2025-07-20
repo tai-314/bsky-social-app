@@ -20,6 +20,8 @@ import {
 } from '@tanstack/react-query'
 
 import {
+  CULTURE_FEED_URI,
+  CULTURE_SAVED_FEED,
   // LATEST_FEED_URI,
   DISCOVER_FEED_URI,
   DISCOVER_SAVED_FEED,
@@ -389,56 +391,6 @@ export type SavedFeedSourceInfo = FeedSourceInfo & {
   savedFeed: AppBskyActorDefs.SavedFeed
 }
 
-// const PWI_DISCOVER_FEED_STUB: SavedFeedSourceInfo = {
-//   type: 'feed',
-//   displayName: 'Discover',
-//   uri: DISCOVER_FEED_URI,
-//   feedDescriptor: `feedgen|${DISCOVER_FEED_URI}`,
-//   route: {
-//     href: '/',
-//     name: 'Home',
-//     params: {},
-//   },
-//   cid: '',
-//   avatar: '',
-//   description: new RichText({text: ''}),
-//   creatorDid: '',
-//   creatorHandle: '',
-//   likeCount: 0,
-//   likeUri: '',
-//   // ---
-//   savedFeed: {
-//     id: 'pwi-discover',
-//     ...DISCOVER_SAVED_FEED,
-//   },
-//   contentMode: undefined,
-// }
-
-// const PWI_LATEST_FEED_STUB: SavedFeedSourceInfo = {
-//   type: 'feed',
-//   displayName: 'Latest',
-//   uri: LATEST_FEED_URI,
-//   feedDescriptor: `feedgen|${LATEST_FEED_URI}`,
-//   route: {
-//     href: '/',
-//     name: 'Home',
-//     params: {},
-//   },
-//   cid: '',
-//   avatar: '',
-//   description: new RichText({text: ''}),
-//   creatorDid: '',
-//   creatorHandle: '',
-//   likeCount: 0,
-//   likeUri: '',
-//   // ---
-//   savedFeed: {
-//     id: 'pwi-latest',
-//     ...DISCOVER_SAVED_FEED,
-//   },
-//   contentMode: undefined,
-// }
-
 const PWI_DISCOVER_FEED_STUB: SavedFeedSourceInfo = {
   type: 'feed',
   displayName: 'Discover',
@@ -464,6 +416,31 @@ const PWI_DISCOVER_FEED_STUB: SavedFeedSourceInfo = {
   contentMode: undefined,
 }
 
+const PWI_CULTURE_FEED_STUB: SavedFeedSourceInfo = {
+  type: 'feed',
+  displayName: 'The Culture',
+  uri: CULTURE_FEED_URI,
+  feedDescriptor: `feedgen|${CULTURE_FEED_URI}`,
+  route: {
+    href: '/culture',
+    name: 'The Culture',
+    params: {},
+  },
+  cid: '',
+  avatar: '',
+  description: new RichText({text: ''}),
+  creatorDid: '',
+  creatorHandle: '',
+  likeCount: 0,
+  likeUri: '',
+  // ---
+  savedFeed: {
+    id: 'pwi-the-culture',
+    ...CULTURE_SAVED_FEED,
+  },
+  contentMode: undefined,
+}
+
 const pinnedFeedInfosQueryKeyRoot = 'pinnedFeedsInfos'
 
 export function usePinnedFeedsInfos() {
@@ -482,12 +459,19 @@ export function usePinnedFeedsInfos() {
     ],
     queryFn: async () => {
       if (!hasSession) {
+        // INFO: FEED LIST FOR UNAUTHENTICATED USERS
         // INFO: Add more feeds when not logged in
         return [
-          // PWI_LATEST_FEED_STUB,
           PWI_DISCOVER_FEED_STUB,
+          // PWI_CULTURE_FEED_STUB,
         ]
       }
+      // else {
+      //    return [
+      //     PWI_DISCOVER_FEED_STUB,
+      //     PWI_CULTURE_FEED_STUB,
+      //   ]
+      // }
 
       let resolved = new Map<string, FeedSourceInfo>()
 
@@ -526,6 +510,12 @@ export function usePinnedFeedsInfos() {
 
       // order the feeds/lists in the order they were pinned
       const result: SavedFeedSourceInfo[] = []
+
+      // INFO: Custom Feeds
+      // TODO: Move to timeline so itll be after Following
+      result.push(PWI_DISCOVER_FEED_STUB)
+      result.push(PWI_CULTURE_FEED_STUB)
+
       for (let pinnedItem of pinnedItems) {
         const feedInfo = resolved.get(pinnedItem.value)
         if (feedInfo) {
@@ -556,6 +546,7 @@ export function usePinnedFeedsInfos() {
           })
         }
       }
+
       return result
     },
   })

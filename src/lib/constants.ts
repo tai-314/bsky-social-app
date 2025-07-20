@@ -150,6 +150,8 @@ export const LATEST_FEED_URI =
   'at://did:plc:w4xbfzo7kqfes5zb7r6qv3rw/app.bsky.feed.generator/blacksky'
 export const DISCOVER_FEED_URI =
   'at://did:plc:w4xbfzo7kqfes5zb7r6qv3rw/app.bsky.feed.generator/blacksky-trend'
+export const CULTURE_FEED_URI =
+  'at://did:plc:25q3gss3nwssw4uhyb2udtzj/app.bsky.feed.generator/the-culture'
 // export const VIDEO_FEED_URI =
 //   'at://did:plc:w4xbfzo7kqfes5zb7r6qv3rw/app.bsky.feed.generator/blacksky-videos'
 // export const STAGING_VIDEO_FEED_URI =
@@ -161,11 +163,19 @@ export const VIDEO_FEED_URI =
 export const STAGING_VIDEO_FEED_URI =
   'at://did:plc:yofh3kx63drvfljkibw5zuxo/app.bsky.feed.generator/thevids'
 export const VIDEO_FEED_URIS = [VIDEO_FEED_URI, STAGING_VIDEO_FEED_URI]
+
 export const DISCOVER_SAVED_FEED = {
   type: 'feed',
   value: DISCOVER_FEED_URI,
   pinned: true,
 }
+// TODO
+export const CULTURE_SAVED_FEED = {
+  type: 'feed',
+  value: CULTURE_FEED_URI,
+  pinned: true,
+}
+
 export const TIMELINE_SAVED_FEED = {
   type: 'timeline',
   value: 'following',
@@ -180,7 +190,7 @@ export const VIDEO_SAVED_FEED = {
 export const RECOMMENDED_SAVED_FEEDS: Pick<
   AppBskyActorDefs.SavedFeed,
   'type' | 'value' | 'pinned'
->[] = [DISCOVER_SAVED_FEED, TIMELINE_SAVED_FEED]
+>[] = [DISCOVER_SAVED_FEED, CULTURE_SAVED_FEED, TIMELINE_SAVED_FEED]
 
 export const KNOWN_SHUTDOWN_FEEDS = [
   'at://did:plc:wqowuobffl66jv3kpsvo7ak4/app.bsky.feed.generator/the-algorithm', // for you by skygaze
