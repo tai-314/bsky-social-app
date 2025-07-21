@@ -9,6 +9,7 @@ import {SafeAreaProvider} from 'react-native-safe-area-context'
 import {msg} from '@lingui/macro'
 import {useLingui} from '@lingui/react'
 import * as Sentry from '@sentry/react-native'
+import PWAPrompt from 'react-ios-pwa-prompt'
 
 import {QueryProvider} from '#/lib/react-query'
 import {Provider as StatsigProvider} from '#/lib/statsig/statsig'
@@ -161,6 +162,18 @@ function InnerApp() {
                     </ComposerProvider>
                   </QueryProvider>
                   <ToastContainer />
+                  {/*  PWA PROMPT  */}
+                  <PWAPrompt
+                    appIconPath={'/static/logo192.png'}
+                    timesToShow={16}
+                    promptOnVisit={2}
+                    delay={6000}
+                    copyShareStep={`Press the 'Share' button on the browser menu bar`}
+                    copyDescription={
+                      'This website has app functionality. Add it to your home screen to use it in fullscreen.'
+                    }
+                  />
+                  {/*  PWA PROMPT  */}
                 </React.Fragment>
               </ActiveVideoProvider>
             </VideoVolumeProvider>

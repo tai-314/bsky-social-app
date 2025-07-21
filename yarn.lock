@@ -16714,6 +16714,11 @@ react-image-crop@^11.0.7:
   resolved "https://registry.yarnpkg.com/react-image-crop/-/react-image-crop-11.0.7.tgz#25f3d37ccbb65a05d19d23b4740a5912835c741e"
   integrity sha512-ZciKWHDYzmm366JDL18CbrVyjnjH0ojufGDmScfS4ZUqLHg4nm6ATY+K62C75W4ZRNt4Ii+tX0bSjNk9LQ2xzQ==
 
+react-ios-pwa-prompt@^2.0.6:
+  version "2.0.6"
+  resolved "https://registry.yarnpkg.com/react-ios-pwa-prompt/-/react-ios-pwa-prompt-2.0.6.tgz#c1722b7a8b5b9c1700e730281756990b35c8b4d0"
+  integrity sha512-slRvFlcYsOL01D8gbJW4agOQ64pk7V+0EBk+d8z8wQ40vtcaoSw/JJkh+fJQrWSfWFVvZESu3FHP0+un4YUjJg==
+
 react-is@19, react-is@^19.0.0:
   version "19.1.0"
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-19.1.0.tgz#805bce321546b7e14c084989c77022351bbdd11b"

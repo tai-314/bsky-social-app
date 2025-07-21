@@ -180,6 +180,7 @@
     "react-compiler-runtime": "^19.1.0-rc.1",
     "react-dom": "19.0.0",
     "react-image-crop": "^11.0.7",
+    "react-ios-pwa-prompt": "^2.0.6",
     "react-is": "19",
     "react-keyed-flatten-children": "^5.0.0",
     "react-native": "0.79.2",
