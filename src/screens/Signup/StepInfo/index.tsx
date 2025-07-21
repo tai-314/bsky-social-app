@@ -19,6 +19,7 @@ import * as TextField from '#/components/forms/TextField'
 import {Envelope_Stroke2_Corner0_Rounded as Envelope} from '#/components/icons/Envelope'
 import {Lock_Stroke2_Corner0_Rounded as Lock} from '#/components/icons/Lock'
 import {Ticket_Stroke2_Corner0_Rounded as Ticket} from '#/components/icons/Ticket'
+import {InlineLinkText} from '#/components/Link'
 import {Loader} from '#/components/Loader'
 import {BackNextButtons} from '../BackNextButtons'
 
@@ -186,6 +187,19 @@ export function StepInfo({
                     )}
                   />
                 </TextField.Root>
+                <TextField.LabelText>
+                  <Trans> </Trans>
+                </TextField.LabelText>
+                <TextField.LabelText>
+                  <Trans>
+                    <InlineLinkText
+                      label={_(msg`Read the Bluesky Terms of Service`)}
+                      key="tos"
+                      to={'https://invite.grapevyne.space'}>
+                      Request an Invite Code
+                    </InlineLinkText>
+                  </Trans>
+                </TextField.LabelText>
               </View>
             )}
             <View>
