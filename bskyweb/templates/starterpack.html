@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block html_head_extra -%}
-  <!-- <meta name="apple-itunes-app" content="app-id=xyz.blueskyweb.app, app-clip-bundle-id=xyz.blueskyweb.app.AppClip, app-clip-display=card"> -->
+  <!-- <meta name="apple-itunes-app" content="app-id=xyz.grapevyne.app, app-clip-bundle-id=xyz.grapevyne.app.AppClip, app-clip-display=card"> -->
   {%- if requestURI %}
   <meta property="og:url" content="{{ requestURI }}">
   {% endif -%}
@@ -9,8 +9,8 @@
   <meta property="og:image" content="{{ imgThumbUrl }}">
   <meta property="twitter:image" content="{{ imgThumbUrl }}">
   {%- else -%}
-  <meta property="og:image" content="//static/social-card-default-gradient.png" />
-  <meta property="twitter:image" content="//static/social-card-default-gradient.png"  />
+  <meta property="og:image" content="/static/social-card-default-gradient.png" />
+  <meta property="twitter:image" content="/static/social-card-default-gradient.png"  />
   {% endif -%}
   <meta name="twitter:card" content="summary_large_image" />
   {%- if title %}
@@ -20,7 +20,7 @@
   <meta property="og:title" content="GrapeVyne" />
   <meta name="twitter:title" content="GrapeVyne" />
   {% endif -%}
-  <meta name="description" content="Join the conversation" />
-  <meta name="og:description" content="Join the conversation" />
-  <meta name="twitter:description" content="Join the conversation" />
+  <meta name="description" content="A space for Us by Us. Find your tribe among millions of people, express yourself, and be free." />
+  <meta name="og:description" content="A space for Us by Us. Find your tribe among millions of people, express yourself, and be free." />
+  <meta name="twitter:description" content="A space for Us by Us. Find your tribe among millions of people, express yourself, and be free." />
 {%- endblock %}
