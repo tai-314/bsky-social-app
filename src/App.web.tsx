@@ -167,10 +167,11 @@ function InnerApp() {
                     appIconPath={'/static/logo192.png'}
                     timesToShow={16}
                     promptOnVisit={2}
-                    delay={6000}
+                    delay={3000}
+                    copyTitle={`Install Web App`}
                     copyShareStep={`Press the 'Share' button on the browser menu bar`}
                     copyDescription={
-                      'This website has app functionality. Add it to your home screen to use it in fullscreen.'
+                      'For the best experience, install our web app and add it to your home screen to enjoy fullscreen mode.'
                     }
                   />
                   {/*  PWA PROMPT  */}
