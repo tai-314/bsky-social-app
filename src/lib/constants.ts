@@ -138,20 +138,23 @@ export const LANG_DROPDOWN_HITSLOP = {top: 10, bottom: 10, left: 4, right: 4}
 export const BACK_HITSLOP = HITSLOP_30
 export const MAX_POST_LINES = 25
 
-export const BSKY_APP_ACCOUNT_DID = 'did:plc:z72i7hdynmk6r22z27h6tvur'
+export const BSKY_APP_ACCOUNT_DID = 'did:plc:25q3gss3nwssw4uhyb2udtzj'
+export const GRP_CULTURE_ACCOUNT_DID = 'did:plc:nm4uzmyxurtb3vawtfo7y6lm'
 
 export const BSKY_FEED_OWNER_DIDS = [
   BSKY_APP_ACCOUNT_DID,
+  'did:plc:z72i7hdynmk6r22z27h6tvur',
   'did:plc:vpkhqolt662uhesyj6nxm7ys',
   'did:plc:q6gjnaw2blty4crticxkmujt',
 ]
 
-export const LATEST_FEED_URI =
-  'at://did:plc:w4xbfzo7kqfes5zb7r6qv3rw/app.bsky.feed.generator/blacksky'
 export const DISCOVER_FEED_URI =
   'at://did:plc:w4xbfzo7kqfes5zb7r6qv3rw/app.bsky.feed.generator/blacksky-trend'
+export const LATEST_FEED_URI =
+  'at://did:plc:w4xbfzo7kqfes5zb7r6qv3rw/app.bsky.feed.generator/blacksky'
 export const CULTURE_FEED_URI =
   'at://did:plc:25q3gss3nwssw4uhyb2udtzj/app.bsky.feed.generator/the-culture'
+
 // export const VIDEO_FEED_URI =
 //   'at://did:plc:w4xbfzo7kqfes5zb7r6qv3rw/app.bsky.feed.generator/blacksky-videos'
 // export const STAGING_VIDEO_FEED_URI =
@@ -226,7 +229,7 @@ export const EMOJI_REACTION_LIMIT = 5
 export const urls = {
   website: {
     blog: {
-      initialVerificationAnnouncement: `https://bsky.social/about/blog/04-21-2025-verification`,
+      initialVerificationAnnouncement: `https://grapevyne.org/about/blog/04-21-2025-verification`,
     },
   },
 }

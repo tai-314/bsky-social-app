@@ -15,7 +15,9 @@ import {useQueryClient} from '@tanstack/react-query'
 import {uploadBlob} from '#/lib/api'
 import {
   BSKY_APP_ACCOUNT_DID,
-  DISCOVER_SAVED_FEED,
+  GRP_CULTURE_ACCOUNT_DID,
+  // DISCOVER_SAVED_FEED,
+  // CULTURE_SAVED_FEED,
   TIMELINE_SAVED_FEED,
   VIDEO_SAVED_FEED,
 } from '#/lib/constants'
@@ -101,18 +103,25 @@ export function StepFinished() {
       await Promise.all([
         bulkWriteFollows(agent, [
           BSKY_APP_ACCOUNT_DID,
+          GRP_CULTURE_ACCOUNT_DID,
           ...(listItems?.map(i => i.subject.did) ?? []),
         ]),
         (async () => {
           // Interests need to get saved first, then we can write the feeds to prefs
           await agent.setInterestsPref({tags: selectedInterests})
 
+          // INFO: Default Feeds for Onboarding
           // Default feeds that every user should have pinned when landing in the app
           const feedsToSave: SavedFeed[] = [
-            {
-              ...DISCOVER_SAVED_FEED,
-              id: TID.nextStr(),
-            },
+            //   INFO: Can remove these because feeds are pinned by default via App Logic
+            // {
+            //   ...DISCOVER_SAVED_FEED,
+            //   id: TID.nextStr(),
+            // },
+            // {
+            //   ...CULTURE_SAVED_FEED,
+            //   id: TID.nextStr(),
+            // },
             {
               ...TIMELINE_SAVED_FEED,
               id: TID.nextStr(),
