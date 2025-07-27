@@ -644,12 +644,12 @@ function ExtraLinks() {
       <InlineLinkText
         style={[a.text_md]}
         label={_(msg`Terms of Service`)}
-        to="https://grapevyne.org/about/support/tos">
+        to="https://grapevyne.org/legal/tos">
         <Trans>Terms of Service</Trans>
       </InlineLinkText>
       <InlineLinkText
         style={[a.text_md]}
-        to="https://grapevyne.org/about/support/privacy-policy"
+        to="https://grapevyne.org/legal/privacy-policy"
         label={_(msg`Privacy Policy`)}>
         <Trans>Privacy Policy</Trans>
       </InlineLinkText>

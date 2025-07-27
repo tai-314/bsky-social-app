@@ -215,7 +215,7 @@ export function Takendown() {
                   Your account was found to be in violation of the{' '}
                   <InlineLinkText
                     label={_(msg`GrapeVyne Social Terms of Service`)}
-                    to="https://grapevyne.org/about/support/tos"
+                    to="https://grapevyne.org/legal/tos"
                     style={[a.text_md, a.leading_normal]}
                     overridePresentation>
                     GrapeVyne Social Terms of Service

@@ -5,7 +5,10 @@ import {useLingui} from '@lingui/react'
 import {useFocusEffect} from '@react-navigation/native'
 
 import {usePalette} from '#/lib/hooks/usePalette'
-import {type CommonNavigatorParams, type NativeStackScreenProps} from '#/lib/routes/types'
+import {
+  type CommonNavigatorParams,
+  type NativeStackScreenProps,
+} from '#/lib/routes/types'
 import {s} from '#/lib/styles'
 import {useSetMinimalShellMode} from '#/state/shell'
 import {TextLink} from '#/view/com/util/Link'
@@ -39,8 +42,8 @@ export const CommunityGuidelinesScreen = (_props: Props) => {
               The Community Guidelines have been moved to{' '}
               <TextLink
                 style={pal.link}
-                href="https://grapevyne.org/about/support/community-guidelines"
-                text="grapevyne.org/about/support/community-guidelines"
+                href="https://grapevyne.org/legal/community-guidelines"
+                text="grapevyne.org/legal/community-guidelines"
               />
             </Trans>
           </Text>
